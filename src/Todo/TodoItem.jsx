@@ -1,25 +1,45 @@
+import React from 'react';
+import Context from '../context';
+import '../index.css';
+
+const styles = {
+  li: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItem: 'center',
+    padding: '10px 10px',
+    border: '1px solid #696969',
+    borderRadius: '4px',
+    marginBottom: '15px',
+  },
+  input: {
+    marginRight: '10px',
+  },
+};
 function TodoItem({ todo, index, onChange }) {
-  const styles = {
-    li: {
-      display: 'flex',
-      justifyContent: 'space-between',
-      alignItem: 'center',
-      padding: '10px 10px',
-      border: '1px solid #696969',
-      borderRadius: '4px',
-      marginBottom: '15px',
-    },
-    input: {
-      marginRight: '10px',
-    },
-  };
+  const { removeTodo } = React.useContext(Context);
+
+  const classes = [];
+
+  if (todo.done) {
+    classes.push('compl');
+  }
+
   return (
     <li style={styles.li}>
       <span>
-        <input type="checkbox" />
+        <input
+          type="checkbox"
+          checked={todo.done}
+          style={styles.input}
+          onChange={() => onChange(todo.id)}
+        />
+        <strong>{index + 1}</strong>
         {todo.title}
       </span>
-      <button onClick={null}>&#10006;</button>
+      <button className="close" onClick={removeTodo.bind(null, todo.id)}>
+        &#10006;
+      </button>
     </li>
   );
 }
