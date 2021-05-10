@@ -2,6 +2,8 @@ import React from 'react';
 import Context from '../context';
 import '../index.css';
 
+import PropTypes from 'prop-types';
+
 const styles = {
   li: {
     display: 'flex',
@@ -43,5 +45,11 @@ function TodoItem({ todo, index, onChange }) {
     </li>
   );
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  index: PropTypes.number,
+  onChange: PropTypes.func.isRequired,
+};
 
 export default TodoItem;

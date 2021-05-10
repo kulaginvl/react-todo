@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 function useInputValue(defaultValue = '') {
   const [value, setValue] = React.useState(defaultValue);
@@ -29,5 +30,8 @@ function AddTodo({ onCreate }) {
     </form>
   );
 }
+AddTodo.propTypes = {
+  onCreate: PropTypes.func.isRequired,
+};
 
 export default AddTodo;
