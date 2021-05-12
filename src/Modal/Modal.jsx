@@ -1,5 +1,6 @@
 import React from 'react';
 import './Modal.css';
+import PropTypes from 'prop-types';
 
 function Modal() {
   const [isOpen, setOpen] = React.useState(false);
@@ -27,4 +28,9 @@ function Modal() {
     </React.Fragment>
   );
 }
+
+Modal.propTypes = {
+  isOpen: PropTypes.bool,
+  onClick: PropTypes.func,
+};
 export default Modal;
